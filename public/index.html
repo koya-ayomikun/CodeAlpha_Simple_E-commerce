@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CodeAlpha Simple E-commerce Store">
+    <title>E-Commerce Store | CodeAlpha Task 1</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">ShopAlpha</div>
+            <ul class="nav-links">
+                <li><a href="#" onclick="showSection('products-section')">Home</a></li>
+                <li><a href="#" onclick="showSection('cart-section')">Cart (<span id="cart-count">0</span>)</a></li>
+                <li><a href="#" onclick="showSection('auth-section')">Account</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- 1. USER REGISTRATION / LOGIN SECTION -->
+        <section id="auth-section" class="view-section hidden">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div id="login-box" class="form-box">
+                    <h2>User Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email Address</label>
+                            <input type="email" id="login-email" required placeholder="user@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn">Log In</button>
+                    </form>
+                    <p>Don't have an account? <a href="#" onclick="toggleAuth('register')">Register here</a></p>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="register-box" class="form-box hidden">
+                    <h2>User Registration</h2>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="reg-name">Full Name</label>
+                            <input type="text" id="reg-name" required placeholder="John Doe">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-email">Email Address</label>
+                            <input type="email" id="reg-email" required placeholder="user@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="reg-password">Password</label>
+                            <input type="password" id="reg-password" required placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                    <p>Already have an account? <a href="#" onclick="toggleAuth('login')">Login here</a></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PRODUCT LISTING SECTION -->
+        <section id="products-section" class="view-section">
+            <h2>Featured Products</h2>
+            <!-- Products will load here dynamically via JavaScript -->
+            <div id="products-grid" class="products-grid">
+                <p>Loading products...</p>
+            </div>
+        </section>
+
+        <!-- 3. PRODUCT DETAILS PAGE / MODAL -->
+        <section id="product-details-modal" class="modal hidden">
+            <div class="modal-content">
+                <button class="close-btn" onclick="closeProductDetails()">&times;</button>
+                <div class="product-details-grid">
+                    <img id="detail-image" src="" alt="Product Image">
+                    <div class="details-info">
+                        <h2 id="detail-title">Product Title</h2>
+                        <p id="detail-price" class="price">$0.00</p>
+                        <p id="detail-description">Product description will appear here...</p>
+                        <button id="detail-add-btn" class="btn">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. SHOPPING CART & CHECKOUT SECTION -->
+        <section id="cart-section" class="view-section hidden">
+            <h2>Your Shopping Cart</h2>
+            
+            <div class="cart-container">
+                <!-- Cart Items Table -->
+                <div class="cart-items" id="cart-items-container">
+                    <p>Your cart is empty.</p>
+                </div>
+
+                <!-- Cart Summary & Checkout -->
+                <div class="cart-summary">
+                    <h3>Order Summary</h3>
+                    <div class="summary-line">
+                        <span>Total Amount:</span>
+                        <strong id="cart-total">$0.00</strong>
+                    </div>
+                    
+                    <!-- 5. ORDER PROCESSING / CHECKOUT BUTTON -->
+                    <button id="checkout-btn" class="btn btn-checkout" onclick="processOrder()">Proceed to Checkout</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 ShopAlpha. CodeAlpha Full Stack Task 1.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
